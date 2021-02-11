@@ -36,6 +36,8 @@ export const Params = {
     KEY_OFFROAD_HARDWARE_UNSUPPORTED: 'Offroad_HardwareUnsupported',
     KEY_COMMUNITY_FEATURES: 'CommunityFeaturesToggle',
     KEY_LANE_DEPARTURE_WARNING_ENABLED: 'IsLdwEnabled',
+    KEY_TESLA_RADAR_ENABLED: 'TeslaRadarActivate',
+    KEY_VISION_RADAR_ENABLED: 'VisionRadarToggle',
     KEY_LANE_CHANGE_ENABLED: 'LaneChangeEnabled',
     KEY_IS_DRIVER_VIEW_ENABLED: 'IsDriverViewEnabled',
     KEY_IS_RHD: 'IsRHD',

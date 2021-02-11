@@ -260,6 +260,8 @@ class Settings extends Component {
                 OpenpilotEnabledToggle: openpilotEnabled,
                 Passive: isPassive,
                 IsLdwEnabled: isLaneDepartureWarningEnabled,
+                IsTeslaRadarEnabled: isTeslaRadarEnabled,
+                IsVisionRadarEnabled: isVisionRadarEnabled,
                 LaneChangeEnabled: laneChangeEnabled,
             },
         } = this.props;
@@ -312,6 +314,24 @@ class Settings extends Component {
                             isExpanded={ expandedCell == 'ldw' }
                             handleExpanded={ () => this.handleExpanded('ldw') }
                             handleChanged={ this.props.setLaneDepartureWarningEnabled } />
+                        <X.TableCell
+                            type='switch'
+                            title='Enable Tesla Radar'
+                            value={ !!parseInt(isTeslaRadarEnabled) }
+                            iconSource={ Icons.warning }
+                            description='If equipped, enable the Tesla Radar. Also enables openpilot longitudinal control.'
+                            isExpanded={ expandedCell == 'enable_teslardar' }
+                            handleExpanded={ () => this.handleExpanded('enable_teslardar') }
+                            handleChanged={ this.props.setTeslaRadarEnabled } />
+                        <X.TableCell
+                            type='switch'
+                            title='Enable Vision Radar'
+                            value={ !!parseInt(isVisionRadarEnabled) }
+                            iconSource={ Icons.warning }
+                            description='Use the vision model output for longitudinal control. Also enables openpilot longitudinal control.'
+                            isExpanded={ expandedCell == 'enable_visionradar' }
+                            handleExpanded={ () => this.handleExpanded('enable_visionradar') }
+                            handleChanged={ this.props.setVisionRadarEnabled } />
                         <X.TableCell
                             type='switch'
                             title='Record and Upload Driver Camera'
@@ -945,6 +965,12 @@ const mapDispatchToProps = dispatch => ({
     },
     setLaneDepartureWarningEnabled: (isLaneDepartureWarningEnabled) => {
         dispatch(updateParam(Params.KEY_LANE_DEPARTURE_WARNING_ENABLED, (isLaneDepartureWarningEnabled | 0).toString()));
+    },
+    setTeslaRadarEnabled: (isTeslaRadarEnabled) => {
+        dispatch(updateParam(Params.KEY_TESLA_RADAR_ENABLED, (isTeslaRadarEnabled | 0).toString()));
+    },
+    setVisionRadarEnabled: (isVisionRadarEnabled) => {
+        dispatch(updateParam(Params.KEY_VISION_RADAR_ENABLED, (isVisionRadarEnabled | 0).toString()));
     },
     setLaneChangeEnabled: (laneChangeEnabled) => {
         dispatch(updateParam(Params.KEY_LANE_CHANGE_ENABLED, (laneChangeEnabled | 0).toString()));
